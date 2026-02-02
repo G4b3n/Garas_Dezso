@@ -1,0 +1,164 @@
+/* stilus.css */
+
+/* 2. pont: Betűtípus beállítása az egész oldalra */
+body {
+    font-family: Georgia, "Times New Roman", Times, serif; /* Talpas betűtípus */
+}
+
+/* 4. pont: Oldal szerkezetének beállítása - két téglalap alakú rész, szélesség és központosítás */
+.tartalom, .forras {
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px; 
+    box-sizing: border-box; /* include padding in the width so the block stays centered */
+}
+
+/* 4. pont: Színek beállítása */
+.tartalom {
+    background-color: #CCC; /* Világos szürke háttér (felső rész) */
+    color: black;
+    /* removed padding-left here to avoid centering issues; children will be indented */
+}
+
+/* Indent every direct child block inside .tartalom so headers, paragraphs and other blocks move in */
+.tartalom > * {
+    margin-left: 20px;
+}
+
+/* Make list markers align with the indented content */
+.tartalom ul {
+    list-style-position: outside;
+    padding-left: 1em; /* keeps bullets aligned with text */
+    margin-left: 0; /* already indented by the parent rule */
+}
+
+/* 4. pont: A bekezdések sorkizártak és balról behúzottak */
+/* In .tartalom the container padding provides the indent, so remove first-line indent here */
+.tartalom p {
+    margin: 0 0 1em 0; /* alap térköz bekezdések közt */
+}
+
+.forras{
+    background-color: #757575;
+    color: white;
+}
+
+#a{
+    color: white;
+}
+
+.forras p {
+    text-align: justify; /* sorkizárt igazítás */
+}
+
+
+/* 6. pont: A Garas Dezső képéhez tartozó "adatok" osztály formázása (garas.html) */
+.adatok {
+    width: 130px; /* Terület szélessége */
+    float: right; /* Jobbra igazítás */
+    margin-left: 15px; /* Szövegtől mért távolság bal oldalon */
+    border-left: 2px solid black; /* Bal oldalon fekete vonal */
+    text-align: center; /* Tartalom középre igazítása */
+    padding-left: 5px; 
+    box-sizing: border-box; 
+}
+
+/* Garas small portrait details under the image: ensure three stacked rows */
+.adatok p {
+    display: block;
+    margin: 4px 0; /* small vertical spacing between the three lines */
+    line-height: 1.1;
+    font-size: 90%;
+    text-align: center; /* center the dates under the image */
+}
+
+/* 6. pont: Garas Dezső képének formázása (garas2.jpg) */
+.adatok img {
+    width: 100px; /* Kép szélessége 100 képpont */
+    border: 1px solid white; /* Vékony fehér szegély */
+}
+
+/* 7. pont: A szerepek.jpg kép beállítása a rendelkezésre álló terület teljes szélességére */
+/* Feltételezve, hogy a kép a .tartalom osztályon belül található */
+.tartalom img:not(.adatok img):not(.elso img) {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Make the large full-width image have a white 1px border */
+img.teljes_szelesseg {
+    border: 1px solid white;
+    box-sizing: border-box;
+}
+
+/* 12. pont: Az első díjazottak táblázatszerű elrendezésének "elso" osztály formázása (dijazottak.html) */
+.elso {
+    font-size: 80%; /* Karakterméret 80%-ra csökkentése */
+    /* Táblázatszerű elrendezéshez flexbox használata a sorokba törés és az elemek egymás melletti megjelenítéséhez */
+    display: flex;
+    flex-wrap: wrap; /* Több sorba törés engedélyezése */
+    justify-content: center; /* Képek középre rendezése */
+    gap: 10px; /* Képek közötti térköz (10px) */
+    margin-top: 15px;
+    text-align: center; /* Ha a képek alatti feliratok lennének */
+}
+
+/* figure stílusok a képek alatti szöveghez */
+figure {
+    width: 100px; /* fix szélesség, egyezik az eredeti képmérettel */
+    margin: 0; /* nincs extra külső margó */
+    text-align: center;
+    box-sizing: border-box;
+    border: none; /* nincs keret a figure-en */
+    background: transparent; /* nincs háttér a figure-en */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 4px;
+    padding: 0; /* eltávolítva a korábbi padding */
+}
+
+.elso img {
+    width: 100%; /* a figure szélességét kitölti */
+    height: auto;
+    border: 2px solid white; /* minden kép körül saját keret */
+    background: #fff; /* fehér háttér a kép mögött */
+    margin: 0; /* eltávolítva a korábbi kis margó */
+    display: block;
+    border-radius: 4px;
+}
+
+figure figcaption {
+    font-size: 90%;
+    margin-top: 10px; /* nagyobb távolság a kép és a felirat között */
+    color: #000;
+    font-weight: 600; /* kicsit jobban elkülönül a képtől */
+    white-space: nowrap;       /* don't wrap to multiple lines */
+    overflow: hidden;         /* hide overflow */
+    text-overflow: ellipsis;  /* show ellipsis if too long */
+    width: 100%;
+    display: block;
+}
+
+/* Tisztító elem: nulla magasság, nincs margó, így nem hagy fölös térközt */
+.tiszta {
+    clear: both;
+    margin: 0;
+    padding: 0;
+    height: 0;
+}
+
+#teljes_szelesseg {
+    border: 1px solid white;
+}
+
+/* Links: make link text white everywhere */
+a, a:link, a:visited {
+    color: white;
+}
+/* Optional: slightly different hover color so users see interaction */
+a:hover, a:active {
+    color: #ffd966;
+}
